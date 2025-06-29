@@ -23,3 +23,8 @@ RUN pip install \
 
 # ➏ directory di lavoro
 WORKDIR /workspace
+
+# ➐ installiamo Node.js e npm
+RUN apt-get update && apt-get install -y nodejs npm \
+    && npm install -g puppeteer playwright \
+    && rm -rf /var/lib/apt/lists/*
