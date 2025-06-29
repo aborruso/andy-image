@@ -3,31 +3,31 @@ FROM python:3.12-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PIP_NO_CACHE_DIR=1
-# ➊ aggiungiamo ~/.local/bin al PATH: qui uv mette i tool “stand-alone”
+# ➊ add ~/.local/bin to PATH: uv puts stand-alone tools here
 ENV PATH="/root/.local/bin:${PATH}"
 
-# ➋ pacchetti di sistema utili per scraping
+# ➋ system packages useful for scraping
 RUN apt-get update && apt-get install -y \
     chromium curl wget jq miller \
     && rm -rf /var/lib/apt/lists/*
 
-# ➌ installiamo uv
+# ➌ install uv
 RUN curl -Ls https://astral.sh/uv/install.sh | sh
 
-# ➍ installiamo scrape-cli, yq, flatterer, frictionless come tool indipendenti
+# ➍ install scrape-cli, yq, flatterer, frictionless as stand-alone tools
 RUN uv tool install scrape-cli
 RUN uv tool install yq
 RUN uv tool install flatterer
 RUN uv tool install frictionless
 
-# ➎ librerie Python condivise
+# ➎ shared Python libraries
 RUN pip install \
     requests beautifulsoup4 playwright==1.44.0
 
-# ➏ directory di lavoro
+# ➏ working directory
 WORKDIR /workspace
 
-# ➐ installiamo Node.js (da NodeSource) e i pacchetti npm globali
+# ➐ install Node.js (from NodeSource) and global npm packages
 RUN apt-get update \
     && apt-get install -y curl \
     && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
@@ -35,5 +35,5 @@ RUN apt-get update \
     && npm install -g puppeteer playwright \
     && rm -rf /var/lib/apt/lists/*
 
-# ➑ installiamo duckdb
+# ➑ install duckdb
 RUN curl https://install.duckdb.org | sh
