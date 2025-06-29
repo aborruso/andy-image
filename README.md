@@ -24,7 +24,7 @@ The the package at: <https://github.com/aborruso/andy-image/pkgs/container/andy-
 
 ---
 
-**Note**: if you use this docker image to run some GitHub Action workflow in another repository, you may need to set Git's safe directory configuration to avoid issues with Git operations. You can do this by adding the following step in your workflow:
+**Note**: if you use this docker image to run some GitHub Action workflow in another repository, you may need to set Git's safe directory configuration in the workflow file, to avoid issues with Git operations. You can do this by adding the following step in your workflow:
 
 ```yaml
       - name: Set git safe directory
