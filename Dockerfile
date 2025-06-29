@@ -8,7 +8,7 @@ ENV PATH="/root/.local/bin:${PATH}"
 
 # ➋ system packages useful for scraping
 RUN apt-get update && apt-get install -y \
-    chromium curl wget jq miller xmlstarlet \
+    chromium curl wget jq miller xmlstarlet git \
     && rm -rf /var/lib/apt/lists/*
 
 # ➌ install uv
