@@ -24,7 +24,10 @@ RUN pip install \
 # ➏ directory di lavoro
 WORKDIR /workspace
 
-# ➐ installiamo Node.js e npm
-RUN apt-get update && apt-get install -y nodejs npm \
+# ➐ installiamo Node.js (da NodeSource) e i pacchetti npm globali
+RUN apt-get update \
+    && apt-get install -y curl \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
     && npm install -g puppeteer playwright \
     && rm -rf /var/lib/apt/lists/*
