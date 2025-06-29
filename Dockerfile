@@ -40,6 +40,10 @@ RUN apt-get update \
     && npm install -g puppeteer playwright \
     && rm -rf /var/lib/apt/lists/*
 
+# Copy package.json and install local dependencies (like puppeteer)
+COPY resources/package*.json /workspace/
+RUN npm install
+
 # ➑ install duckdb
 RUN curl https://install.duckdb.org | sh
 
