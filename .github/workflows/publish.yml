@@ -3,6 +3,9 @@ name: publish-image
 on:
   push:
     branches: [main]      # ogni push su main ricostruisce
+    paths-ignore:
+      - 'README.md'
+      - '.github/workflows/publish.yml'
   workflow_dispatch:      # puoi lanciarlo a mano dal tab “Actions”
 
 jobs:
