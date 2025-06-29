@@ -14,8 +14,11 @@ RUN apt-get update && apt-get install -y \
 # ➌ installiamo uv
 RUN curl -Ls https://astral.sh/uv/install.sh | sh
 
-# ➍ installiamo scrape-cli come tool indipendente
-RUN uv tool install scrape-cli yq flatterer frictionless
+# ➍ installiamo scrape-cli, yq, flatterer, frictionless come tool indipendenti
+RUN uv tool install scrape-cli
+RUN uv tool install yq
+RUN uv tool install flatterer
+RUN uv tool install frictionless
 
 # ➎ librerie Python condivise
 RUN pip install \
