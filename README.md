@@ -21,3 +21,12 @@ docker pull ghcr.io/aborruso/andy-image:latest
 ```
 
 See the package at: <https://github.com/aborruso/andy-image/pkgs/container/andy-image>
+
+Note: put these instructions in the workflow of the repo tha will use this image:
+
+```yaml
+      - name: Set git safe directory
+        run: git config --global --add safe.directory ${GITHUB_WORKSPACE}
+```
+
+In this way, you can use the image in your GitHub Actions workflows without issues related to Git's safe directory settings.
