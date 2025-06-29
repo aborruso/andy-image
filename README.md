@@ -20,13 +20,15 @@ You can pull and use this image with:
 docker pull ghcr.io/aborruso/andy-image:latest
 ```
 
-The the package at: <https://github.com/aborruso/andy-image/pkgs/container/andy-image>
+View the package at: <https://github.com/aborruso/andy-image/pkgs/container/andy-image>
 
 ---
 
-**Note**: if you use this docker image to run some GitHub Action workflow in another repository, you may need to set Git's safe directory configuration in the workflow file, to avoid issues with Git operations. You can do this by adding the following step in your workflow:
+**Note for repositories using this image**: Although this Docker image already has Git configured with `git config --global --add safe.directory '*'`, when you use this image in your own GitHub Actions workflows, this configuration might not propagate correctly between different execution contexts. To ensure Git operations work properly in all steps of your workflow, add this configuration to your repository's workflow:
 
 ```yaml
       - name: Set git safe directory
         run: git config --global --add safe.directory ${GITHUB_WORKSPACE}
 ```
+
+This explicitly marks the GitHub Actions workspace as a safe directory for Git operations in the workflow environment.
