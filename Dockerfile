@@ -31,3 +31,6 @@ RUN apt-get update \
     && apt-get install -y nodejs \
     && npm install -g puppeteer playwright \
     && rm -rf /var/lib/apt/lists/*
+
+# ➑ installiamo duckdb
+RUN curl https://install.duckdb.org | sh
