@@ -20,6 +20,7 @@ RUN uv tool install yq
 RUN uv tool install flatterer
 RUN uv tool install frictionless
 RUN uv tool install ckanapi
+RUN uv tool install visidata
 
 # ➎ shared Python libraries
 RUN pip install \
