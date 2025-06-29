@@ -6,6 +6,7 @@ on:
     paths-ignore:
       - 'README.md'
       - '.github/workflows/publish.yml'
+      - '.github/workflows/test-image.yml'
   workflow_dispatch:      # puoi lanciarlo a mano dal tab “Actions”
 
 jobs:
