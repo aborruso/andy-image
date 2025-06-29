@@ -6,7 +6,17 @@ This Docker image provides a ready-to-use environment for data scraping, web aut
 - Chromium browser for headless browsing
 - Node.js (via NodeSource) with global installation of puppeteer and playwright
 - System tools: curl, wget, jq, miller
-- scrape-cli, yq, flatterer, frictionless (installed as standalone tools via uv)
+- Stand-alone tools (via uv): scrape-cli, yq, flatterer, frictionless, ckanapi
 - duckdb (installed via official script)
 
 The image is designed for flexible data workflows, combining Python, Node.js, and CLI tools for scraping and data transformation tasks.
+
+## Usage
+
+You can pull and use this image with:
+
+```
+docker pull ghcr.io/aborruso/andy-image:latest
+```
+
+See the package at: https://github.com/aborruso/andy-image/pkgs/container/andy-image
