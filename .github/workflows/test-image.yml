@@ -1,0 +1,26 @@
+name: Test andy-image
+
+on:
+  workflow_dispatch:  # puoi avviarlo a mano
+
+jobs:
+  test-image:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/aborruso/andy-image:latest
+
+    steps:
+      - name: Check Python version
+        run: python --version
+
+      - name: Check scrape-cli
+        run: scrape --version
+
+      - name: Check jq
+        run: jq --version
+
+      - name: Check duckdb
+        run: duckdb --version
+
+      - name: Check xan
+        run: xan --help | head -n 5
