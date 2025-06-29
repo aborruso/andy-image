@@ -42,8 +42,13 @@ RUN curl https://install.duckdb.org | sh
 
 # ➒ install xan (latest release, x86_64-unknown-linux-musl)
 RUN set -eux; \
-    XAN_URL=$(curl -s https://api.github.com/repos/medialab/xan/releases/latest | \
-      grep browser_download_url | grep x86_64-unknown-linux-musl.tar.gz | cut -d '"' -f 4); \
+    for i in 1 2 3; do \
+      XAN_URL=$(curl -s --fail --retry 3 https://api.github.com/repos/medialab/xan/releases/latest | \
+        jq -r '.assets[] | select(.name | endswith("x86_64-unknown-linux-musl.tar.gz")) | .browser_download_url'); \
+      if [ -n "$XAN_URL" ]; then break; fi; \
+      echo "Attempt $i failed. Retrying in 5 seconds..."; \
+      sleep 5; \
+    done; \
     echo "XAN_URL: $XAN_URL"; \
     if [ -z "$XAN_URL" ]; then echo "XAN_URL not found"; exit 1; fi; \
     curl -L "$XAN_URL" -o /tmp/xan.tar.gz; \
