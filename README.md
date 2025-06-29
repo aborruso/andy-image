@@ -20,4 +20,4 @@ You can pull and use this image with:
 docker pull ghcr.io/aborruso/andy-image:latest
 ```
 
-See the package at: https://github.com/aborruso/andy-image/pkgs/container/andy-image
+See the package at: <https://github.com/aborruso/andy-image/pkgs/container/andy-image>
