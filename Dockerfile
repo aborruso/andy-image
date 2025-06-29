@@ -19,6 +19,7 @@ RUN uv tool install scrape-cli
 RUN uv tool install yq
 RUN uv tool install flatterer
 RUN uv tool install frictionless
+RUN uv tool install ckanapi
 
 # ➎ shared Python libraries
 RUN pip install \
