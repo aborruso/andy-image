@@ -11,6 +11,9 @@ RUN apt-get update && apt-get install -y \
     chromium curl wget jq miller xmlstarlet git \
     && rm -rf /var/lib/apt/lists/*
 
+# configure git for CI/CD environments
+RUN git config --global --add safe.directory '*'
+
 # ➌ install uv
 RUN curl -Ls https://astral.sh/uv/install.sh | sh
 
