@@ -42,7 +42,11 @@ RUN curl https://install.duckdb.org | sh
 # ➒ install xan (latest release, x86_64-unknown-linux-gnu)
 RUN set -eux; \
     XAN_URL=$(curl -s https://api.github.com/repos/medialab/xan/releases/latest | \
-      grep "browser_download_url.*x86_64-unknown-linux-gnu" | \
-      cut -d '"' -f 4); \
-    curl -L "$XAN_URL" -o /usr/local/bin/xan; \
-    chmod +x /usr/local/bin/xan
+      grep browser_download_url | grep x86_64-unknown-linux-gnu.tar.gz | cut -d '"' -f 4); \
+    echo "XAN_URL: $XAN_URL"; \
+    if [ -z "$XAN_URL" ]; then echo "XAN_URL not found"; exit 1; fi; \
+    curl -L "$XAN_URL" -o /tmp/xan.tar.gz; \
+    tar -xzf /tmp/xan.tar.gz -C /tmp; \
+    mv /tmp/xan /usr/local/bin/xan; \
+    chmod +x /usr/local/bin/xan; \
+    rm /tmp/xan.tar.gz
