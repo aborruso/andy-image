@@ -8,6 +8,7 @@ This Docker image provides a ready-to-use environment for data scraping, web aut
 - System tools: curl, wget, jq, miller
 - Stand-alone tools (via uv): scrape-cli, yq, flatterer, frictionless, ckanapi
 - duckdb (installed via official script)
+- xan (latest release, installed from GitHub)
 
 The image is designed for flexible data workflows, combining Python, Node.js, and CLI tools for scraping and data transformation tasks.
 
