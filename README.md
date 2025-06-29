@@ -16,7 +16,7 @@ The image is designed for flexible data workflows, combining Python, Node.js, an
 
 You can pull and use this image with:
 
-```
+```bash
 docker pull ghcr.io/aborruso/andy-image:latest
 ```
 
