@@ -38,3 +38,11 @@ RUN apt-get update \
 
 # ➑ install duckdb
 RUN curl https://install.duckdb.org | sh
+
+# ➒ install xan (latest release, x86_64-unknown-linux-gnu)
+RUN set -eux; \
+    XAN_URL=$(curl -s https://api.github.com/repos/medialab/xan/releases/latest | \
+      grep "browser_download_url.*x86_64-unknown-linux-gnu" | \
+      cut -d '"' -f 4); \
+    curl -L "$XAN_URL" -o /usr/local/bin/xan; \
+    chmod +x /usr/local/bin/xan
