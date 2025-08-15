@@ -22,6 +22,13 @@ docker pull ghcr.io/aborruso/andy-image:latest
 
 View the package at: <https://github.com/aborruso/andy-image/pkgs/container/andy-image>
 
+## Continuous Integration and Deployment
+
+This project leverages GitHub Actions for automated testing and publishing of the Docker image:
+
+*   **`test-image.yml`**: This workflow runs basic checks to ensure that the tools and libraries included in the Docker image are correctly installed and functional. It verifies components like Python, `scrape-cli`, `jq`, `duckdb`, and `xan`.
+*   **`publish.yml`**: This workflow is responsible for building the Docker image and pushing it to the GitHub Container Registry (GHCR). It is triggered automatically on pushes to the `main` branch (excluding changes to documentation or workflow files) and can also be triggered manually. The image is tagged with both `1.0` and `latest`.
+
 ---
 
 **Note for repositories using this image**: Although this Docker image already has Git configured with `git config --global --add safe.directory '*'`, when you use this image in your own GitHub Actions workflows, this configuration might not propagate correctly between different execution contexts. To ensure Git operations work properly in all steps of your workflow, add this configuration to your repository's workflow:
