@@ -28,7 +28,7 @@ RUN uv tool install visidata
 
 # ➎ shared Python libraries
 RUN pip install \
-    requests beautifulsoup4 playwright==1.44.0 requests-aws4auth GDAL
+    requests beautifulsoup4 playwright==1.44.0 requests-aws4auth GDAL==3.10.3
 
 # ➏ working directory
 WORKDIR /workspace

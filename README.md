@@ -2,10 +2,10 @@
 
 This Docker image provides a ready-to-use environment for data scraping, web automation, and data processing. It includes:
 
-- Python 3.12 with libraries: requests, beautifulsoup4, playwright, requests-aws4auth
+- Python 3.12 with libraries: requests, beautifulsoup4, playwright, requests-aws4auth, GDAL
 - Chromium browser for headless browsing
 - Node.js (via NodeSource) with global installation of puppeteer and playwright
-- System tools: curl, wget, jq, miller, xmlstarlet, git
+- System tools: curl, wget, jq, miller, xmlstarlet, git, gdal-bin
 - Stand-alone tools (via uv): scrape-cli, yq, flatterer, frictionless, ckanapi, visidata
 - duckdb (installed via official script)
 - xan (latest release, installed from GitHub)
