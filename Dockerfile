@@ -7,7 +7,13 @@ ENV PIP_NO_CACHE_DIR=1
 ENV PATH="/root/.local/bin:${PATH}"
 
 # ➋ system packages useful for scraping
-RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates lsb-release wget &&     wget https://packages.apache.org/artifactory/arrow/$(lsb_release --id --short | tr 'A-Z' 'a-z')/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb &&     apt-get install -y --no-install-recommends ./apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb &&     apt-get update &&     apt-get install -y --no-install-recommends chromium curl wget jq miller xmlstarlet git gdal-bin libgdal-dev build-essential libarrow-dev libparquet-dev &&     rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates lsb-release wget && \
+    wget https://packages.apache.org/artifactory/arrow/$(lsb_release --id --short | tr 'A-Z' 'a-z')/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb && \
+    apt-get install -y --no-install-recommends ./apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends chromium curl wget jq miller xmlstarlet git gdal-bin libgdal-dev build-essential && \
+    apt-get install -y --no-install-recommends libarrow-dev libparquet-dev && \
+    rm -rf /var/lib/apt/lists/*
 
 # configure git for CI/CD environments
 RUN git config --global --add safe.directory '*'
