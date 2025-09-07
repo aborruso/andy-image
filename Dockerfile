@@ -8,7 +8,8 @@ ENV PATH="/root/.local/bin:${PATH}"
 
 # ➋ system packages useful for scraping
 RUN apt-get update && apt-get install -y \
-    chromium curl wget jq miller xmlstarlet git gdal-bin libgdal-dev \
+    chromium curl wget jq miller xmlstarlet git gdal-bin libgdal-dev build-essential \
+
 
     && rm -rf /var/lib/apt/lists/*
 
