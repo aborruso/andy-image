@@ -8,7 +8,8 @@ ENV PATH="/root/.local/bin:${PATH}"
 
 # ➋ system packages useful for scraping
 RUN apt-get update && apt-get install -y \
-    chromium curl wget jq miller xmlstarlet git \
+    chromium curl wget jq miller xmlstarlet git gdal-bin libgdal-dev \
+
     && rm -rf /var/lib/apt/lists/*
 
 # configure git for CI/CD environments
@@ -27,7 +28,7 @@ RUN uv tool install visidata
 
 # ➎ shared Python libraries
 RUN pip install \
-    requests beautifulsoup4 playwright==1.44.0 requests-aws4auth
+    requests beautifulsoup4 playwright==1.44.0 requests-aws4auth GDAL
 
 # ➏ working directory
 WORKDIR /workspace
