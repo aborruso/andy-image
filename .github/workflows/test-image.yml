@@ -24,3 +24,6 @@ jobs:
 
       - name: Check xan
         run: xan --help | head -n 5
+
+      - name: Check GDAL GeoParquet support
+        run: ogrinfo --formats | grep -q "Parquet"
